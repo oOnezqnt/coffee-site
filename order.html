@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Заказать доставку — Bean & Brew</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --choc-dark:#2E1A10;
+    --choc:#4A2E1D;
+    --coffee:#7A5233;
+    --caramel:#C89B6D;
+    --cream:#F8F1E5;
+    --cream-2:#F0E4D0;
+    --ink:#2A1B12;
+    --ink-soft:#7A6552;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{background:var(--cream);}
+  body{color:var(--ink);font-family:'Mulish',sans-serif;overflow-x:hidden;}
+  h1,.display{font-family:'Playfair Display',serif;}
+  .container{max-width:640px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem;}
+  header.site{background:var(--choc-dark);}
+  .back-link{color:#E4D3BF;transition:color .2s ease;}
+  .back-link:hover{color:#fff;}
+  .btn-primary{background:var(--caramel);color:var(--choc-dark);transition:background .2s ease, transform .15s ease;}
+  .btn-primary:hover{background:#DBB183;}
+  .btn-primary:disabled{opacity:.6;cursor:not-allowed;}
+  input,textarea{background:#fff;border:1px solid rgba(74,46,29,.2);color:var(--ink);transition:border-color .2s ease, box-shadow .2s ease;}
+  input:focus,textarea:focus{outline:none;border-color:var(--coffee);box-shadow:0 0 0 3px rgba(122,82,51,.15);}
+  input.invalid,textarea.invalid{border-color:#C0392B;}
+  .field-error{color:#C0392B;font-size:.8rem;min-height:1.1rem;margin-top:.25rem;}
+  .card{background:#fff;border:1px solid rgba(74,46,29,.08);}
+  .success-pop{animation:pop .35s ease;}
+  @keyframes pop{from{opacity:0;transform:scale(.94) translateY(6px);}to{opacity:1;transform:scale(1) translateY(0);}}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--caramel);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important;}}
+</style>
+</head>
+<body>
+
+<header class="site py-5">
+  <div class="container flex items-center justify-between">
+    <a href="index.html" class="back-link text-sm">← Вернуться на сайт</a>
+    <span class="display text-lg font-semibold text-white">Bean & Brew</span>
+  </div>
+</header>
+
+<main class="py-16 md:py-20">
+  <div class="container">
+    <h1 class="display text-3xl md:text-4xl font-semibold mb-2">Заказать доставку</h1>
+    <p class="text-[var(--ink-soft)] mb-10">Заполни форму — свяжемся с тобой для подтверждения заказа.</p>
+
+    <div id="successBlock" class="hidden success-pop card rounded-2xl p-10 text-center">
+      <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:rgba(122,82,51,.12);color:var(--coffee)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <p class="font-semibold text-lg">Заявка отправлена</p>
+      <p class="text-sm text-[var(--ink-soft)] mt-2">Мы свяжемся с тобой в ближайшее время, чтобы подтвердить заказ.</p>
+      <a href="index.html" class="btn-primary inline-block mt-6 font-medium px-6 py-3 rounded-full text-sm">Вернуться на сайт</a>
+    </div>
+
+    <form id="orderForm" novalidate class="card rounded-2xl p-6 md:p-8 space-y-5">
+      <div>
+        <label for="name" class="text-sm font-medium block mb-1.5">Имя</label>
+        <input id="name" name="name" type="text" placeholder="Как к тебе обращаться" class="w-full rounded-xl px-4 py-3 text-sm">
+        <p class="field-error" data-error-for="name"></p>
+      </div>
+      <div>
+        <label for="phone" class="text-sm font-medium block mb-1.5">Телефон</label>
+        <input id="phone" name="phone" type="tel" placeholder="+420 000 000 000" class="w-full rounded-xl px-4 py-3 text-sm">
+        <p class="field-error" data-error-for="phone"></p>
+      </div>
+      <div>
+        <label for="address" class="text-sm font-medium block mb-1.5">Адрес доставки</label>
+        <input id="address" name="address" type="text" placeholder="Улица, дом, квартира" class="w-full rounded-xl px-4 py-3 text-sm">
+        <p class="field-error" data-error-for="address"></p>
+      </div>
+      <div>
+        <label for="comment" class="text-sm font-medium block mb-1.5">Что заказываем?</label>
+        <textarea id="comment" name="comment" rows="4" placeholder="Например: 2x Капучино, 1x Чизкейк Нью-Йорк" class="w-full rounded-xl px-4 py-3 text-sm"></textarea>
+        <p class="field-error" data-error-for="comment"></p>
+      </div>
+
+      <p id="formError" class="text-sm text-red-700 hidden"></p>
+
+      <button type="submit" id="submitBtn" class="btn-primary w-full font-medium px-7 py-3.5 rounded-full">Отправить заявку</button>
+    </form>
+  </div>
+</main>
+
+<script>
+  /* ============================================================
+     ССЫЛКА НА GOOGLE APPS SCRIPT (Web App)
+     ------------------------------------------------------------
+     Вставь сюда URL вида https://script.google.com/macros/s/.../exec,
+     который ты получил при деплое скрипта в Google Таблице.
+     ============================================================ */
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdf1J00lSD0XWyYKxb75tVJjvORG4iNGwpvdB4qgtqbdvxPh2AopyIvM-0c1jFttRYmw/exec';
+
+  const form = document.getElementById('orderForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formError = document.getElementById('formError');
+  const successBlock = document.getElementById('successBlock');
+
+  function setFieldError(name, message) {
+    const el = form.querySelector(`[data-error-for="${name}"]`);
+    const input = form.querySelector(`[name="${name}"]`);
+    el.textContent = message || '';
+    input.classList.toggle('invalid', Boolean(message));
+  }
+
+  function validate() {
+    let valid = true;
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const address = form.address.value.trim();
+    const comment = form.comment.value.trim();
+
+    if (name.length < 2) { setFieldError('name', 'Введи имя (минимум 2 символа)'); valid = false; }
+    else setFieldError('name', '');
+
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 7) { setFieldError('phone', 'Введи корректный номер телефона'); valid = false; }
+    else setFieldError('phone', '');
+
+    if (address.length < 5) { setFieldError('address', 'Укажи адрес подробнее'); valid = false; }
+    else setFieldError('address', '');
+
+    if (comment.length < 3) { setFieldError('comment', 'Напиши, что хочешь заказать'); valid = false; }
+    else setFieldError('comment', '');
+
+    return valid;
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formError.classList.add('hidden');
+
+    if (!validate()) return;
+
+    if (!SCRIPT_URL || SCRIPT_URL === 'ВСТАВЬ_СЮДА_СВОЙ_URL') {
+      formError.textContent = 'Форма пока не подключена к таблице — вставь SCRIPT_URL в коде.';
+      formError.classList.remove('hidden');
+      return;
+    }
+
+    const payload = {
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      address: form.address.value.trim(),
+      comment: form.comment.value.trim(),
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляем…';
+
+    // Content-Type: text/plain специально, а не application/json —
+    // это позволяет избежать "preflight"-запроса (OPTIONS), который
+    // Google Apps Script по умолчанию не обрабатывает. Сам скрипт
+    // всё равно разбирает тело как JSON через JSON.parse().
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+    })
+      .then(res => res.json())
+      .then(() => {
+        form.classList.add('hidden');
+        successBlock.classList.remove('hidden');
+      })
+      .catch(err => {
+        console.error('Не удалось отправить заказ:', err);
+        formError.textContent = 'Не получилось отправить заявку. Попробуй ещё раз чуть позже.';
+        formError.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить заявку';
+      });
+  });
+
+  ['name', 'phone', 'address', 'comment'].forEach(n => {
+    form[n].addEventListener('input', () => setFieldError(n, ''));
+  });
+</script>
+</body>
+</html>

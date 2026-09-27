@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>О нас — Bean & Brew</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --choc-dark:#2E1A10;
+    --choc:#4A2E1D;
+    --coffee:#7A5233;
+    --caramel:#C89B6D;
+    --cream:#F8F1E5;
+    --cream-2:#F0E4D0;
+    --ink:#2A1B12;
+    --ink-soft:#7A6552;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{background:var(--cream);}
+  body{color:var(--ink);font-family:'Mulish',sans-serif;overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+  .container{max-width:1160px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem;}
+  header.site{background:rgba(46,26,16,.95);}
+  .nav-link{color:#E4D3BF;transition:color .2s ease;}
+  .nav-link:hover{color:#fff;}
+  .nav-link.active{color:#fff;font-weight:600;}
+  .team-card{background:#fff;border:1px solid rgba(74,46,29,.1);transition:transform .22s ease, box-shadow .22s ease;}
+  .team-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(74,46,29,.14);}
+  .team-photo{width:96px;height:96px;border-radius:9999px;object-fit:cover;background:var(--cream-2);}
+  footer.site{background:var(--choc-dark);color:#E4D3BF;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--caramel);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="site sticky top-0 z-50">
+  <div class="container flex items-center justify-between h-16">
+    <a href="index.html" class="display text-xl font-semibold text-white">Bean & Brew</a>
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="index.html" class="nav-link">Главная</a>
+      <a href="index.html#menu" class="nav-link">Меню</a>
+      <a href="about.html" class="nav-link active">О нас</a>
+      <a href="index.html#contact" class="nav-link">Контакты</a>
+    </nav>
+    <a href="order.html" class="text-sm font-medium px-5 py-2.5 rounded-full" style="background:var(--caramel);color:var(--choc-dark)">Заказать доставку</a>
+  </div>
+</header>
+
+<main class="py-16 md:py-24">
+  <div class="container max-w-3xl">
+    <p class="text-sm text-[var(--coffee)] font-semibold mb-4">НАША ИСТОРИЯ</p>
+    <h1 class="display text-4xl md:text-5xl font-semibold leading-tight mb-8">От гаражной обжарки до двух точек в городе</h1>
+
+    <div class="space-y-5 text-[var(--ink-soft)] leading-relaxed">
+      <p>Всё началось в 2018 году с гаражной обжарочной машины на 1 кг зерна в неделю и упрямого желания не подавать кофе из пакета. Никакого бизнес-плана — просто хотелось пить дома то, что действительно нравится, а не то, что было в ближайшем супермаркете.</p>
+      <p>Через полгода друзья стали приходить не только за кофе, но и просто поговорить — так родилась идея открыть первую точку. Мы до сих пор обжариваем зерно сами, три раза в неделю, работаем напрямую с фермами в Эфиопии и Гватемале, и учим бариста разбираться во вкусе, а не только в кнопках кофемашины.</p>
+      <p>Мы не гонимся за трендами и не добавляем сиропы с ароматизаторами — просто честно готовим то, что любим сами. Если зайдёте — обязательно расскажем, откуда именно сегодняшнее зерно.</p>
+    </div>
+  </div>
+
+  <div class="container max-w-3xl mt-20">
+    <p class="text-sm text-[var(--coffee)] font-semibold mb-4">КОМАНДА</p>
+    <h2 class="display text-3xl md:text-4xl font-semibold mb-10">Кто варит твой кофе</h2>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="team-card rounded-2xl p-6 flex gap-5 items-start">
+        <img src="https://picsum.photos/id/1005/200/200" alt="Егор" class="team-photo">
+        <div>
+          <p class="font-semibold text-lg">Егор</p>
+          <p class="text-sm text-[var(--coffee)] mb-2">Основатель, обжарщик</p>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">Начинал с той самой гаражной обжарки. До сих пор лично пробует каждую новую партию зерна.</p>
+        </div>
+      </div>
+      <div class="team-card rounded-2xl p-6 flex gap-5 items-start">
+        <img src="https://picsum.photos/id/1011/200/200" alt="Марина" class="team-photo">
+        <div>
+          <p class="font-semibold text-lg">Марина</p>
+          <p class="text-sm text-[var(--coffee)] mb-2">Старший бариста</p>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">Три года на латте-арте. Помнит заказы постоянных гостей наизусть.</p>
+        </div>
+      </div>
+      <div class="team-card rounded-2xl p-6 flex gap-5 items-start">
+        <img src="https://picsum.photos/id/1027/200/200" alt="Дан" class="team-photo">
+        <div>
+          <p class="font-semibold text-lg">Дан</p>
+          <p class="text-sm text-[var(--coffee)] mb-2">Бариста, вторая точка</p>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">Пришёл как гость, остался работать через месяц. Отвечает за десертную витрину.</p>
+        </div>
+      </div>
+      <div class="team-card rounded-2xl p-6 flex gap-5 items-start">
+        <img src="https://picsum.photos/id/1012/200/200" alt="Аня" class="team-photo">
+        <div>
+          <p class="font-semibold text-lg">Аня</p>
+          <p class="text-sm text-[var(--coffee)] mb-2">Кондитер</p>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">Печёт всё, что стоит в витрине — от круассанов до чизкейка, каждое утро с нуля.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site py-10">
+  <div class="container flex flex-col sm:flex-row items-center justify-between gap-5">
+    <a href="index.html" class="display text-lg font-semibold">Bean & Brew</a>
+    <p class="text-xs">© 2026 Bean & Brew. Все права защищены.</p>
+  </div>
+</footer>
+
+</body>
+</html>

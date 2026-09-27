@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bean & Brew — специальти-кофейня</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --choc-dark:#2E1A10;
+    --choc:#4A2E1D;
+    --coffee:#7A5233;
+    --caramel:#C89B6D;
+    --cream:#F8F1E5;
+    --cream-2:#F0E4D0;
+    --ink:#2A1B12;
+    --ink-soft:#7A6552;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{background:var(--cream);}
+  body{color:var(--ink);font-family:'Mulish',sans-serif;overflow-x:hidden;}
+  h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+  .container{max-width:1160px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem;}
+  header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(46,26,16,.92);backdrop-filter:blur(8px);}
+  .nav-link{color:#E4D3BF;transition:color .2s ease;}
+  .nav-link:hover{color:#fff;}
+  .btn-primary{background:var(--caramel);color:var(--choc-dark);transition:background .2s ease, transform .15s ease;}
+  .btn-primary:hover{background:#DBB183;transform:translateY(-1px);}
+  .btn-outline{border:1.5px solid rgba(255,255,255,.5);color:#fff;transition:background .2s ease, border-color .2s ease;}
+  .btn-outline:hover{background:rgba(255,255,255,.1);border-color:#fff;}
+  .hero{background:radial-gradient(ellipse 90% 70% at 75% 15%, #5A3620 0%, var(--choc-dark) 55%, #1C0F08 100%);}
+  .bean-pattern{
+    background-image: radial-gradient(rgba(200,155,109,.16) 2px, transparent 2px);
+    background-size: 34px 34px;
+    mask-image: radial-gradient(ellipse 80% 65% at 60% 30%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 65% at 60% 30%, black 30%, transparent 80%);
+  }
+  .loc-card{background:var(--cream-2);border:1px solid rgba(42,27,18,.08);transition:transform .2s ease, box-shadow .2s ease;}
+  .loc-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(74,46,29,.14);}
+  .tab-btn{color:var(--ink-soft);border:1px solid rgba(74,46,29,.2);transition:all .2s ease;}
+  .tab-btn.active{background:var(--choc);color:#fff;border-color:var(--choc);}
+  .tab-btn:not(.active):hover{border-color:var(--coffee);color:var(--ink);}
+  .menu-card{background:#fff;border:1px solid rgba(74,46,29,.1);transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;}
+  .menu-card:hover{transform:translateY(-5px);box-shadow:0 16px 30px rgba(74,46,29,.16);border-color:var(--caramel);}
+  .menu-thumb{background:linear-gradient(155deg,var(--coffee),var(--choc));}
+  .skeleton{background:linear-gradient(90deg, rgba(74,46,29,.07) 25%, rgba(74,46,29,.13) 37%, rgba(74,46,29,.07) 63%);background-size:400% 100%;animation:shimmer 1.4s ease infinite;}
+  @keyframes shimmer{0%{background-position:100% 0;}100%{background-position:0 0;}}
+  footer.site{background:var(--choc-dark);color:#E4D3BF;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--caramel);outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important;}}
+</style>
+</head>
+<body>
+ 
+<header class="site">
+  <div class="container flex items-center justify-between h-16 text-sm">
+    <span class="display text-xl font-semibold text-white">Bean & Brew</span>
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="about.html" class="nav-link">О нас</a>
+    </nav>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="tel:+420111222333" class="nav-link">+420 111 222 333</a>
+      <a href="mailto:hello@beanandbrew.cz" class="nav-link">hello@beanandbrew.cz</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://instagram.com/onezqnt" aria-label="Instagram" class="nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1a1eC9Awx5/?mibextid=wwXIfr" aria-label="Facebook" class="nav-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 8h-2a2 2 0 00-2 2v2H9v3h2v7h3v-7h2.2l.8-3H14v-1.5a1 1 0 011-1H16z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+ 
+<main>
+  <!-- HERO -->
+  <section class="hero relative py-28 md:py-40">
+    <div class="absolute inset-0 bean-pattern"></div>
+    <div class="container relative text-center max-w-2xl mx-auto">
+      <p class="text-sm tracking-wide text-[var(--caramel)] mb-5">Спешелти-кофейня · собственная обжарка</p>
+      <h1 class="display text-4xl sm:text-5xl md:text-6xl font-semibold text-white leading-[1.12]">
+        Кофе с характером в<br>каждой чашке
+      </h1>
+      <p class="mt-6 text-lg text-[#E4D3BF]">
+        Отбираем зерно у фермеров лично, обжариваем сами и подаём так,
+        как пили бы дома, если бы дома была профессиональная кофемашина.
+      </p>
+      <div class="mt-10 flex justify-center">
+        <a href="#menu" class="btn-primary font-medium px-8 py-3.5 rounded-full">Смотреть меню</a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ADDRESSES -->
+  <section id="about" class="py-20 md:py-28">
+    <div class="container">
+      <div class="max-w-xl mb-12">
+        <h2 class="display text-3xl md:text-4xl font-semibold">Наши точки</h2>
+        <p class="mt-4 text-[var(--ink-soft)] leading-relaxed">Заходите — обе кофейни в пяти минутах ходьбы от метро.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="loc-card rounded-2xl p-7">
+          <p class="text-xs tracking-wide text-[var(--coffee)] font-semibold mb-2">ТОЧКА №1 · ЦЕНТР</p>
+          <h3 class="font-semibold text-lg mb-3">ул. Каштановая, 14</h3>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">Пн–Пт: 8:00–19:00<br>Сб–Вс: 9:00–18:00</p>
+        </div>
+        <div class="loc-card rounded-2xl p-7">
+          <p class="text-xs tracking-wide text-[var(--coffee)] font-semibold mb-2">ТОЧКА №2 · РЕЧНОЙ РАЙОН</p>
+          <h3 class="font-semibold text-lg mb-3">наб. Влтавы, 27</h3>
+          <p class="text-sm text-[var(--ink-soft)] leading-relaxed">Ежедневно: 8:00–20:00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- MENU -->
+  <section id="menu" class="py-20 md:py-28 bg-[var(--cream-2)]">
+    <div class="container">
+      <div class="max-w-xl mb-4 text-center mx-auto">
+        <h2 class="display text-3xl md:text-4xl font-semibold">Наше Меню</h2>
+      </div>
+ 
+      <div id="menuTabs" class="flex flex-wrap justify-center gap-3 mt-10 mb-10"></div>
+      <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+</main>
+ 
+ 
+<footer class="site py-10">
+  <div class="container flex flex-col sm:flex-row items-center justify-between gap-5">
+    <p class="text-sm">© 2026 Bean & Brew. Все права защищены.</p>
+    <a href="order.html" class="btn-primary font-medium px-6 py-3 rounded-full text-sm">Заказать доставку</a>
+  </div>
+</footer>
+ 
+<script>
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTq5laXP2bBzrHL1MecqTVRyHYF2YRibrnpSho6uURlxgMRrdChY1m8RI-48TfBopzeYsQk8AKUVal1/pub?output=csv&t=" + new Date().getTime();
+ 
+const tabsEl = document.getElementById('menuTabs');
+const gridEl = document.getElementById('menuGrid');
+let allItems = [];
+ 
+async function loadMenu() {
+    // Индикатор загрузки, пока идёт запрос к таблице
+    gridEl.innerHTML = '<div class="col-span-full text-center text-amber-900/60 py-8">Загружаем меню…</div>';
+ 
+    try {
+        const response = await fetch(CSV_URL);
+        if (!response.ok) throw new Error('Ошибка сети');
+        const text = await response.text();
+ 
+        const lines = text.split('\n');
+        allItems = [];
+ 
+        for (let i = 1; i < lines.length; i++) {
+            const rawLine = lines[i];
+            if (!rawLine || !rawLine.trim()) continue;
+ 
+            // Правильный разбор CSV-строки: запятые ВНУТРИ кавычек
+            // (например, в описании "Тот, который на лавандовом")
+            // не считаются разделителями колонок.
+            const cols = parseCSVLine(rawLine);
+ 
+            const name = (cols[0] || '').trim();
+            if (!name || name === 'Название' || name === 'name') continue;
+ 
+            const desc = (cols[1] || '').trim();
+            const price = (cols[2] || '').trim();
+            let category = (cols[3] || '').trim();
+            const image = (cols[4] || '').trim();
+ 
+            if (!category || !isNaN(category)) category = 'Кофе';
+ 
+            if (name && price) {
+                allItems.push({ name, desc, price, category, image });
+            }
+        }
+ 
+        const categories = [...new Set(allItems.map(item => item.category))];
+        renderTabs(categories);
+ 
+        if (categories.length > 0) {
+            switchCategory(categories[0]);
+        } else {
+            gridEl.innerHTML = '<div class="col-span-full text-center text-amber-900/60 py-8">Меню пока пусто.</div>';
+        }
+ 
+    } catch (error) {
+        console.error(error);
+        gridEl.innerHTML = '<div class="col-span-full text-center text-red-800 py-8">Не удалось загрузить меню.</div>';
+    }
+}
+ 
+// Разбирает одну строку CSV на колонки, корректно обрабатывая кавычки:
+// запятые и переносы внутри "..." не считаются разделителями,
+// а "" внутри кавычек превращается в одну обычную кавычку.
+function parseCSVLine(line) {
+    const result = [];
+    let cur = '';
+    let inQuotes = false;
+ 
+    for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+ 
+        if (ch === '"') {
+            if (inQuotes && line[i + 1] === '"') {
+                cur += '"';
+                i++;
+            } else {
+                inQuotes = !inQuotes;
+            }
+        } else if (ch === ',' && !inQuotes) {
+            result.push(cur.trim());
+            cur = '';
+        } else {
+            cur += ch;
+        }
+    }
+    result.push(cur.trim());
+    return result;
+}
+ 
+function renderTabs(categories) {
+    tabsEl.innerHTML = categories.map(cat => `
+        <button onclick="switchCategory('${cat}')" id="tab-${cat}" class="px-4 py-2 rounded-full border border-amber-900/20 text-sm font-medium transition-all duration-300">
+            ${cat}
+        </button>
+    `).join('');
+}
+ 
+ 
+function switchCategory(category) {
+    const buttons = tabsEl.getElementsByTagName('button');
+    for (let btn of buttons) {
+        if (btn.id === `tab-${category}`) {
+            btn.className = "px-4 py-2 rounded-full bg-amber-800 text-white text-sm font-medium transition-all duration-300 shadow-sm";
+        } else {
+            btn.className = "px-4 py-2 rounded-full border border-amber-900/20 text-amber-900/80 hover:bg-amber-50 text-sm font-medium transition-all duration-300";
+        }
+    }
+ 
+    const filtered = allItems.filter(item => item.category === category);
+ 
+    gridEl.innerHTML = filtered.map(item => {
+        const hasImg = item.image && item.image.startsWith('http');
+ 
+        let imgHtml = '';
+        if (hasImg) {
+            imgHtml = '<div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100 -z-10 before:absolute before:inset-0 before:bg-gradient-to-t before:from-black/80 before:via-black/50 before:to-black/70" style="background-image: url(' + item.image + ')"></div>';
+        }
+ 
+        return `
+            <div class="group relative bg-white rounded-2xl p-6 shadow-sm border border-amber-900/5 hover:shadow-xl transition-all duration-500 flex flex-col justify-between overflow-hidden min-h-[160px] z-10">
+                ${imgHtml}
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start gap-4 mb-2">
+                        <h3 class="font-bold text-lg text-amber-900 group-hover:text-white transition-colors duration-300">${item.name}</h3>
+                        <span class="font-bold shrink-0 bg-amber-50 group-hover:bg-amber-700 text-amber-800 group-hover:text-white px-3 py-1 rounded-full text-sm transition-all duration-300">${item.price} руб.</span>
+                    </div>
+                    <p class="text-amber-800/60 group-hover:text-amber-100/80 text-sm leading-relaxed transition-colors duration-300">${item.desc}</p>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+ 
+ 
+document.addEventListener('DOMContentLoaded', loadMenu);
+</script>
+ 
+ 
+</body>
+</html>
